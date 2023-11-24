@@ -1,17 +1,36 @@
+import java.util.ArrayList;
+import java.util.List;
+
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("Honda", "CR-V", 2023, "Red", 50000, 45));
+        cars.add(new Car("Ford", "F-150", 2020, "Black", 25000, 30));
+        cars.add(new Car("BMW", "X5", 2022, "Green", 60000, 65));
+        cars.add(new Car("Mazda", "CX-5", 2019, "White", 15000, 60));
+        cars.add(new Car("Audi", "Q7", 2018, "Silver", 52000, 47));
+        cars.add(new Car("Kia", "Forte", 2020, "Blue", 21000, 56));
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        for (Car car : cars) {
+            car.honk();
+        }
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        for (int i = 0; i < 7; i++) {
+            for (Car car : cars) {
+                int year = car.getYear();
+                if (year < 2023) {
+                    int updatedGas = car.getGas() - (5 + (2023 - year));
+                    car.setGas(updatedGas);
+                } else {
+                    car.setGas(car.getGas() - 5);
+                }
+            }
+        }
+
+        for (Car car : cars) {
+            System.out.println(car.getBrand() + "( " + car.getModel() + " ) Remaining Gas:" + car.getGas());
         }
     }
 }

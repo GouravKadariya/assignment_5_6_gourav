@@ -45,7 +45,7 @@ public class Car {
 
     public void honk() {
         System.out.println("Tuut tuut");
-        this.toString();
+        System.out.println(this);
     }
 
     @Override
